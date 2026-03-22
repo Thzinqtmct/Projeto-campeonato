@@ -1,0 +1,11 @@
+Disciplina: Programação Orientada a Objetos
+
+Integrantes:
+  Lorena Coleto  - 842835
+  Arthur Lopes   - 842156
+
+Link do repositório GitHub:
+  (adicionar aqui)
+
+Link do vídeo:
+  (adicionar aqui)
