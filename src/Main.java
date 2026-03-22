@@ -354,7 +354,32 @@ public class Main {
 
         Placar placar = new Placar(gm, gv);
         ps[idx].registrarResultado(placar);
-        System.out.println("Resultado registrado: " + ps[idx]);
+        System.out.println("\nResultado registrado: " + ps[idx].getMandante().getSigla() + " " + gm + " x " + gv + " " + ps[idx].getVisitante().getSigla());
+        System.out.println("Resultado: " + placar.getResultado());
+
+        // verifica apostas de todos os participantes nessa partida
+        System.out.println("\n--- Resultado das apostas ---");
+        boolean tevAposta = false;
+        for (int i = 0; i < qtdParticipantes; i++) {
+            Aposta[] apostas = participantes[i].getApostas();
+            for (int j = 0; j < apostas.length; j++) {
+                if (apostas[j].getPartida() == ps[idx]) {
+                    tevAposta = true;
+                    int pts = apostas[j].calcularPontos();
+                    String descricao = apostas[j].getDescricaoPalpite();
+                    if (pts == 10) {
+                        System.out.println("  " + participantes[i].getNome() + " -> " + descricao + " | ACERTOU O PLACAR EXATO! +10 pts");
+                    } else if (pts == 5) {
+                        System.out.println("  " + participantes[i].getNome() + " -> " + descricao + " | Acertou o resultado! +5 pts");
+                    } else {
+                        System.out.println("  " + participantes[i].getNome() + " -> " + descricao + " | Nao acertou. 0 pts");
+                    }
+                }
+            }
+        }
+        if (!tevAposta) {
+            System.out.println("  Nenhum participante apostou nessa partida.");
+        }
     }
 
     static void verGrupos() {
